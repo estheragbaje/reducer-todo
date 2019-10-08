@@ -25,7 +25,7 @@ const App = () => {
   };
 
   const toggleComplete = todo => {
-    dispatch({ type: "TOGGLE_COMPLETE", payload: todo });
+    dispatch({ type: "TOGGLE_TODO_COMPLETE", payload: todo });
   };
 
   const clearCompleted = () => {

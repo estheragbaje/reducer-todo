@@ -3,19 +3,19 @@ import uuid from "uuid";
 
 export const initialTodos = [
   {
-    item: "Learn about reducers",
-    completed: false,
-    id: 3892987589
+    title: "Learn about reducers",
+    iscompleted: false,
+    id: 389298758
   },
   {
-    item: "Learn about reducers",
-    completed: false,
-    id: 3892987589
+    title: "Learn about reducers",
+    iscompleted: false,
+    id: 389297589
   },
   {
-    item: "Learn about reducers",
-    completed: false,
-    id: 3892987589
+    title: "Learn about reducers",
+    iscompleted: false,
+    id: 389298759
   }
 ];
 
@@ -33,11 +33,11 @@ export function reducer(state, action) {
   switch (action.type) {
     case ADD_TODOS:
       const newTodo = {
-        id: uuid(),
+        id: new Date(),
         title: state.todo,
         isCompleted: false
       };
-      return { ...state, todos: state.todos.concat(newTodo) };
+      return { ...state, todos: state.todos.concat(newTodo), todo: "" };
 
     case HANDLE_CHANGE:
       return { ...state, todo: action.payload };
@@ -48,7 +48,7 @@ export function reducer(state, action) {
         isCompleted: !action.payload.isCompleted
       };
       const newTodos = state.todos.map(_todo => {
-        if (_todo === action.payload.id) {
+        if (_todo.id === action.payload.id) {
           return newItem;
         } else {
           return _todo;
